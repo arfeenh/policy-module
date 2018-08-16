@@ -159,7 +159,97 @@ public class PolicyDao {
 		}
 }
 	
-	public ArrayList<String> selectAllPolicyNameAndPolicyID() throws ClassNotFoundException, SQLException{
+	/**
+	 * Method to return a List of Policies. The list will simply contain every policy
+	 * in the database. 
+	 * 
+	 * Created by Nicholas Kauldhar on August 16 around 2pm
+	 * 
+	 * @return
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	public static List<Policy> getAllPolicies () throws SQLException, ClassNotFoundException {
+		Connection con = OracleConnection.INSTANCE.getConnection();
+		Statement st = con.createStatement();
+
+		
+		ResultSet rs = st.executeQuery("Select * from Policies");
+		
+		
+		List<Policy> k = new ArrayList<Policy>();
+		
+		Policy temp;
+		while (rs.next()) {
+			temp = new Policy();
+			temp.setPolicyId(rs.getInt(1));
+			temp.setPolicyName(rs.getString(2));
+			temp.setNumberNominees(rs.getInt(3));
+			temp.setTenure(rs.getDouble(4));
+			temp.setSumAssured(rs.getDouble(5));
+			temp.setPreReqs(rs.getString(6));
+			k.add(temp);
+		}
+		OracleConnection.INSTANCE.disconnect();
+		System.out.println(k.get(0).getPolicyId());
+		
+		return k;
+		
+	}
+	
+	/**
+	 * Method used by Admin to generate certificates. It uses customer and 
+	 * policy ID to find a PolicyMap. It then stores the ID of that policy map
+	 * in the session object to be further used in other methods. Returns true if
+	 * a PolicyMap is returned and false otherwise.
+	 * 
+	 * Created by Nicholas Kauldhar on August 16 around 3pm
+	 * 
+	 * @param request
+	 * @return
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	public static boolean searchByCustandPolicy(HttpServletRequest request) throws SQLException, ClassNotFoundException {
+		String custid = request.getParameter("customerID");
+		System.out.println(custid);
+		int c = -1;
+		int d = -1;
+		String polid = request.getParameter("policyID");
+		System.out.println(polid);
+		try {
+			c = Integer.parseInt(custid);
+			d = Integer.parseInt(polid);
+		}
+		catch(Exception e) {
+			return false;
+		}
+		
+		try{
+			Connection con = OracleConnection.INSTANCE.getConnection();
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("Select * from PolicyMap where customer_id = " 
+			+ c + " and policy_id = " + d);
+			if(rs.next()) {
+				request.getSession().setAttribute("certificateMapID", rs.getInt(1));
+				return true;
+			}
+			else {
+				return false;
+			}
+			
+		
+		}
+		catch (Exception e) {
+			return false;
+		}
+		finally {
+			OracleConnection.INSTANCE.disconnect();
+		}
+		
+	}
+
+  public ArrayList<String> selectAllPolicyNameAndPolicyID() throws ClassNotFoundException, SQLException{
 		System.out.println("CHECK");
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -231,9 +321,5 @@ public class PolicyDao {
 			System.out.println("No policies found.");
 			return null;
 		}
-	}
-
-
-	
-	
+  }	
 }
