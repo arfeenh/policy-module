@@ -1,3 +1,7 @@
+/*
+ * Created by Domenic Garreffa on August 15, 2018
+ */
+
 var nomineeForm = `
 	<div class="card-header">
 	<!--  Name  -->

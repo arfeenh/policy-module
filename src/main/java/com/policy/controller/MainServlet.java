@@ -20,6 +20,22 @@ import com.policy.service.PolicyService;
 @WebServlet("/MainServlet")
 public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		 * Use this to differentiate multiple submit buttons in a single form
+		 * 
+		 * Updated by Domenic Garreffa on Aug 16, 2018
+		 */
+		String action = request.getParameter("action");
+		if(action != null) {
+			switch(action) {
+			case "viewPolicyBackButton": 
+				request.getSession().removeAttribute("policy");
+				response.sendRedirect("view/admin.jsp");
+				break;
+		}
+			return;
+		}
+		
 		// TODO Auto-generated method stub
 		HttpSession hses = request.getSession(true);
 		
@@ -97,7 +113,7 @@ public class MainServlet extends HttpServlet {
 		   	obj1.addPolicy(obj);
 		   	
 		   	
-		   	response.sendRedirect("view/RegisterPolicySuccess.jsp");
+		   	response.sendRedirect("view/ViewPolicy.jsp");
 	 
 	}
 }

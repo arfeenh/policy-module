@@ -132,7 +132,7 @@ button {
 			%>
 			<tr>
 				<td class="tbl-labels">Sum Assured</td>
-				<td class="tbl-data">$<%= sumAssured %></td>
+				<td class="tbl-data"><%= sumAssured %></td>
 			</tr>
 			<tr>
 				<td class="tbl-labels">Policy Expire Date</td>
