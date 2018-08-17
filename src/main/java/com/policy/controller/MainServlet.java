@@ -3,7 +3,6 @@ package com.policy.controller;
 
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.policy.data.Policy;
 import com.policy.service.PolicyService;
-
+import com.policy.dao.PolicyDao;
 /**
  * Servlet implementation class MainServlet
  */
@@ -73,6 +72,9 @@ public class MainServlet extends HttpServlet {
   
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String referer = request.getHeader("referer"); //added by hamza 16 aug 11pm
+		
+		if(referer.contains("RegisterPolicy.jsp")) {
 		   	HttpSession ses = request.getSession();
 		   	
 		   	String polName = request.getParameter("policy_name");
@@ -114,6 +116,12 @@ public class MainServlet extends HttpServlet {
 		   	
 		   	
 		   	response.sendRedirect("view/ViewPolicy.jsp");
+		}
+		else if(referer.contains("UpdatePolicy.jsp")) {
+			PolicyDao array = new PolicyDao();
+			//array.selectAllPolicyNameAndPolicyID()
+		}
+
 	 
 	}
 }

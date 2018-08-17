@@ -22,7 +22,7 @@
 			try {
 				List<Policy> k;
 				if (session.getAttribute("allPolicies") == null){
-					k = PolicyDao.getAllPolicies();
+					//k = PolicyDao.getAllPolicies();
 					session.setAttribute("allPolicies", k);
 				}
 				else{

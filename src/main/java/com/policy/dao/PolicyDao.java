@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.policy.data.Policy;
 
@@ -186,7 +190,7 @@ public class PolicyDao {
 			temp.setPolicyName(rs.getString(2));
 			temp.setNumberNominees(rs.getInt(3));
 			temp.setTenure(rs.getDouble(4));
-			temp.setSumAssured(rs.getDouble(5));
+			//temp.setSumAssured(rs.getDouble(5));
 			temp.setPreReqs(rs.getString(6));
 			k.add(temp);
 		}

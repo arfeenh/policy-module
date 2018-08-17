@@ -29,8 +29,18 @@
   	<div class="form-group">
 		<table align="center" >
 			<h1 align="center"> Update Policy </h1>
-			<tr> 
 			
+			<tr>
+				<td> please select policy you would like to update </td>
+				<td>
+				
+				</td>
+				
+			
+			</tr>
+			
+			<tr> 
+		
 				<td> Policy Name </td>
 				<td> <input type="text" name="policy_name" required = "required" pattern="([^\s][A-z0-9\s]+){2,100}"/> </td>
 				<td> </td>

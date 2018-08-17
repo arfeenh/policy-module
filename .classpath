@@ -17,22 +17,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< HEAD
-<<<<<<< HEAD
-	<classpathentry kind="lib" path="C:/Users/1559835/Desktop/ojdbc6.jar"/>
-=======
-	<classpathentry kind="lib" path="C:/Users/1559908/Desktop/ojdbc6.jar"/>
->>>>>>> 03ab9de2f1d339be8927c47fdac76736439e57f0
-=======
-	<classpathentry kind="lib" path="C:/Users/1559835/Desktop/ojdbc6.jar"/>
->>>>>>> 448ea049728c68bf6c34af09576e41af5f1c592b
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -22,14 +22,14 @@
   crossorigin="anonymous"></script>
   
 
-		   
 
-
-	</SCRIPT>
 </head>
 <body>
 <div class="container">
   <div  id="form_style" >
+  
+ <header id="RegisterPolicy">
+
   <form id="CreateFormUI" method= "post" action ="../MainServlet" onsubmit="getFormData(request,response)" >
   	<div class="form-group">
 		<table align="center" >
@@ -129,8 +129,9 @@
 			<p><a href="#" style="color:dodgerblue">Click here</a> to login.</p>
 		</div>
 		</div>
+		
 	</form>
-	 	  
+	</header>
 	</div>
 	</div>
 	
